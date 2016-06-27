@@ -5,7 +5,10 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
 
     <application
         android:allowBackup="true"
@@ -13,6 +16,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
 
         <activity android:name=".MainActivity">
 
@@ -56,6 +60,24 @@
 
         </activity>
 
+=======
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FileManager"
+            android:label="File manager activity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.arseny.audioplayer.MainActivity" />
+        </activity>
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
     </application>
 
 </manifest>

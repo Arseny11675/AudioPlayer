@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <items version="2" />
+=======
+<items version="2" >
+
+    <item
+        jar="/home/arseny/Документы/Программы/Java/P1261_MediaPlayer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f547f1f3c8166d1f9f33a4644b6448ed79b21c0e">
+        <dex dex="/home/arseny/Документы/Программы/Java/P1261_MediaPlayer/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_9e27dcffef85182b66b1d89e31abbf5e58782eec.jar" />
+    </item>
+
+</items>
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8

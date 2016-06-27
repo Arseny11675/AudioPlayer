@@ -5,4 +5,8 @@
     android:layout_height="40sp"
     android:padding="5dip"
     android:gravity="center_vertical"
+<<<<<<< HEAD
     android:onClick="onItemSelected"/>
+=======
+    />
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8

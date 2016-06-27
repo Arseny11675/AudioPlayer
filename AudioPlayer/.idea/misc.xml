@@ -40,9 +40,12 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
+<<<<<<< HEAD
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">

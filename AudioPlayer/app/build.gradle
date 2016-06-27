@@ -5,8 +5,13 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
+<<<<<<< HEAD
         applicationId "com.arseny.audioplayer"
         minSdkVersion 11
+=======
+        applicationId "ru.startandroid.develop.p1261mediaplayer"
+        minSdkVersion 10
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"

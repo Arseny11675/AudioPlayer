@@ -1,5 +1,10 @@
 package com.arseny.audioplayer;
 
+<<<<<<< HEAD
+=======
+import java.io.IOException;
+import android.app.Activity;
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
 import android.content.ContentUris;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -9,6 +14,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+<<<<<<< HEAD
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -42,11 +48,28 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
     final String DATA_HTTP = "http://dl.dropboxusercontent.com/u/6197740/explosion.mp3";
     final String DATA_STREAM = "http://online.radiorecord.ru:8101/rr_128";
     private String AUDIO_NAME = "/Heaven Shall Burn - Godiva.mp3";
+=======
+import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+
+public class MainActivity extends Activity implements OnPreparedListener,
+        OnCompletionListener {
+
+    final String LOG_TAG = "myLogs";
+
+    final String DATA_HTTP = "http://dl.dropboxusercontent.com/u/6197740/explosion.mp3";
+    final String DATA_STREAM = "http://online.radiorecord.ru:8101/rr_128";
+    final String AUDIO_NAME = "/Jenis Joplin - Peace of my heart.mp3";
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
     final String DATA_SD = Environment.getExternalStoragePublicDirectory(
             Environment.DIRECTORY_MUSIC) + AUDIO_NAME;
     final Uri DATA_URI = ContentUris.withAppendedId(
             android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, 13359);
 
+<<<<<<< HEAD
     private List<String> ListOfMusic = new ArrayList<>();
     private View PREVIOUS_VIEW = null;
 
@@ -65,21 +88,35 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
     private Handler handlerSetColorOnItem;
     public ListView list;
     private ArrayAdapter<String> musicList;
+=======
+    MediaPlayer mediaPlayer;
+    AudioManager am;
+    CheckBox chbLoop;
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
 
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
         setContentView(R.layout.activity_main);
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
         chbLoop = (CheckBox) findViewById(R.id.chbLoop);
         chbLoop.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
+<<<<<<< HEAD
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+=======
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
                 if (mediaPlayer != null)
                     mediaPlayer.setLooping(isChecked);
             }
         });
+<<<<<<< HEAD
 
         seekBar = (SeekBar)findViewById(R.id.seekBar);
         seekBar.setOnTouchListener(new View.OnTouchListener() {
@@ -292,6 +329,8 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
 
         if (audioThread.isAlive()) audioThread.interrupt();
         else audioThread.start();
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
     }
 
     public void onClickStart(View view) {
@@ -309,11 +348,29 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
                     mediaPlayer.prepareAsync();
                     break;
                 case R.id.btnStartStream:
+<<<<<<< HEAD
                     if(!audioThread.isAlive()) audioThread.start();
                     break;
                 case R.id.btnStartSD:
                     Log.d(LOG_TAG, "start SD");
                     playSong("storage/sdcard1/Музыка/Heaven Shall Burn/Heaven Shall Burn - Godiva.mp3");
+=======
+                    Log.d(LOG_TAG, "start Stream");
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setDataSource(DATA_STREAM);
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    Log.d(LOG_TAG, "prepareAsync");
+                    mediaPlayer.setOnPreparedListener(this);
+                    mediaPlayer.prepareAsync();
+                    break;
+                case R.id.btnStartSD:
+                    Log.d(LOG_TAG, "start SD");
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setDataSource(DATA_SD);
+                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
                     break;
                 case R.id.btnStartUri:
                     Log.d(LOG_TAG, "start Uri");
@@ -323,6 +380,22 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
                     mediaPlayer.prepare();
                     mediaPlayer.start();
                     break;
+<<<<<<< HEAD
+=======
+                case R.id.btnStartRaw:
+                    Log.d(LOG_TAG, "start Raw");
+                    Log.d(LOG_TAG, String.valueOf(R.raw.explosion));
+                    mediaPlayer = MediaPlayer.create(this, R.raw.explosion);
+                    mediaPlayer.start();
+                    break;
+                case R.id.btnFiles:
+                    Log.e(LOG_TAG, "Pushed FM1");
+                    Intent intent = new Intent(getApplicationContext(), FileManager.class);
+                    Log.e(LOG_TAG, "Pushed FM2");
+                    startActivity(intent);
+                    Log.e(LOG_TAG, "Pushed FM3");
+                    break;
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
             }
 
         } catch (IOException e) {
@@ -335,11 +408,27 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
         mediaPlayer.setOnCompletionListener(this);
     }
 
+<<<<<<< HEAD
     public void onClick(View view) throws InterruptedException {
+=======
+    private void releaseMP() {
+        if (mediaPlayer != null) {
+            try {
+                mediaPlayer.release();
+                mediaPlayer = null;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void onClick(View view) {
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
         if (mediaPlayer == null)
             return;
         switch (view.getId()) {
             case R.id.btnPause:
+<<<<<<< HEAD
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     paused = true;
@@ -366,6 +455,17 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
                 }
                 startTimeView.setText("00:00");
                 endTimeView.setText("99:99");
+=======
+                if (mediaPlayer.isPlaying())
+                    mediaPlayer.pause();
+                break;
+            case R.id.btnResume:
+                if (!mediaPlayer.isPlaying())
+                    mediaPlayer.start();
+                break;
+            case R.id.btnStop:
+                mediaPlayer.stop();
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
                 break;
             case R.id.btnBackward:
                 mediaPlayer.seekTo(mediaPlayer.getCurrentPosition() - 3*1000);
@@ -383,6 +483,7 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
         }
     }
 
+<<<<<<< HEAD
     public View getViewByPosition(int position, ListView listView) {
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
@@ -464,6 +565,8 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
         return artistName;
     }
 
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
     @Override
     public void onPrepared(MediaPlayer mp) {
         Log.d(LOG_TAG, "onPrepared");
@@ -475,6 +578,7 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
         Log.d(LOG_TAG, "onCompletion");
     }
 
+<<<<<<< HEAD
     private void releaseMP() {
         if (mediaPlayer != null) {
             try {
@@ -487,11 +591,16 @@ public class MainActivity extends AppCompatActivity implements OnPreparedListene
         if (timeThread.isAlive()) timeThread.interrupt();
     }
 
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
     @Override
     protected void onDestroy() {
         super.onDestroy();
         releaseMP();
+<<<<<<< HEAD
         if (timeThread.isAlive()) timeThread.interrupt();
         if (audioThread.isAlive()) audioThread.interrupt();
+=======
+>>>>>>> cdb7ab69765d415d4970f3b96b182fa59dc4a3d8
     }
 }
